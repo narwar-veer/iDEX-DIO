@@ -1,12 +1,10 @@
-
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-
+const dotenv = require('dotenv');
 const app = express();
 
-// Define your MongoDB connection URI
-const mongoURI = 'mongodb+srv://anuragkashyap026:9KIMG3vijrQGZlUE@cluster0.9ohqljv.mongodb.net/';
+dotenv.config();
 
 // Define your Mongoose model
 const startupChallengeSchema = new mongoose.Schema({
@@ -37,7 +35,8 @@ const StartupChallenge = mongoose.model('StartupChallenge', startupChallengeSche
 app.use(cors());
 
 // Establish the MongoDB connection
-mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.set('strictQuery', true);
+mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log('Connected to MongoDB');
   })
