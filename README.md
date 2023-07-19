@@ -1,5 +1,6 @@
 # iDEX-DIO
 
+This project is to get information about startups.
 
 git clone https://github.com/akashyap25/iDEX-DIO.git
 
